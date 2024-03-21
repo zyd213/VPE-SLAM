@@ -1,0 +1,27 @@
+<launch>
+
+    <!--- Sim Time -->
+
+    <param name="/use_sim_time" value="true" />
+
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="zy_rviz" args="-d $(find zy_ka)/config/mapping_horizon_front.rviz" ></node>
+
+    <!-- Parameters -->
+
+    <!--- zy_ka-->
+    <!--
+    <node pkg="zy_ka" type="zy_scanregistration" output="screen" name="zy_scanregistration"></node>
+    -->
+
+    <node pkg="zy_ka" type="zy_livox_repub" name="zy_livox_repub" output="screen" ></node>
+
+    <!--
+    <node pkg="zy_ka" type="zy_normEstimate" name="zy_normEstimate" output="screen" ></node>
+    -->
+
+    <!--- bag_test -->
+    <!--
+    <node pkg="rosbag" type="play" name="bag_test" args="/home/adminpc/ros_bag/FR_IOSB_Short.bag - -pause - -clock - -topic /livox/imu /livox/lidar"/>
+    -->
+</launch>

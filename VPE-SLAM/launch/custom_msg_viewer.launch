@@ -1,0 +1,19 @@
+<launch>
+
+    <!--- Sim Time -->
+    <param name="/use_sim_time" value="true" />
+
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="zy_rviz" args="-d $(find zy_ka)/config/custom_msg_viewer.rviz" />
+
+    <!-- Parameters -->
+    <rosparam file = "$(find zy_ka)/config/zy_ka.yaml"/>
+
+    <!--- zy_ka-->
+    <node pkg="zy_ka" type="CustomMsgViewer" name="CustomMsgViewer" output="screen"/>
+
+    <!--- bag_test -->
+    <!--
+    <node pkg="rosbag" type="play" name="bag_test" args="/home/adminpc/ros_bag/FR_IOSB_Short.bag - -pause - -clock - -topic /livox/imu /livox/lidar"/>
+    -->
+</launch>
